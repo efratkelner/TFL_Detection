@@ -9,8 +9,8 @@ try:
     from scipy import signal as sg
     from PIL import Image
 
-except ImportError:
-    print("Installation error")
+except ImportError as e:
+    print(f"Installation error: {e}")
     raise
 
 
