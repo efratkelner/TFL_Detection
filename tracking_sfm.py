@@ -1,12 +1,14 @@
 from matplotlib import image as mpimg
-
+import pickle
 from dataset_generator import crop_image
 
 try:
     from kernel import *
-    from SFM_2 import *
+    from SFM import *
     from SFM_standAlone import *
     from dataset_builder import *
+    from kernel import *
+    from determine_tfl import *
 
 except ImportError as e:
     print(f"Installation error: {e}")
@@ -101,7 +103,7 @@ def estimate_tfl_distance(prev_img, curr_img, prev_frame_id, curr_frame_id, prev
     for i in range(prev_frame_id, curr_frame_id):
         EM = np.dot(data['egomotion_' + str(i) + '-' + str(i + 1)], EM)
     curr_container.EM = EM
-    curr_container = SFM_2.calc_TFL_dist(prev_container, curr_container, focal, pp)
+    curr_container = SFM.calc_TFL_dist(prev_container, curr_container, focal, pp)
     visualize(prev_container, curr_container, focal, pp, prev_frame_id, curr_frame_id)
 
 

@@ -112,3 +112,7 @@ def build_dataset():
                 if img_path.endswith('_leftImg8bit.png'):
                     json_p = json_p.replace('_leftImg8bit.png', '_gtFine_polygons.json')
                     find_tfl_lights(img_path, json_p)
+
+
+if __name__ == '__main__':
+    build_dataset()
